@@ -2,103 +2,209 @@
 
 Un sistema completo de autenticación con registro y login usando HTML5, CSS3, JavaScript para el frontend y Python (FastAPI) con JWT para el backend.
 
+<https://img.shields.io/badge/Demo-Live-green>
+<https://img.shields.io/badge/Python-3.11%2B-blue>
+<https://img.shields.io/badge/FastAPI-0.115%2B-green>
+<https://img.shields.io/badge/License-MIT-yellow>
+
 ## 🚀 Características
 
-- **Frontend responsivo** con HTML5, CSS3 y JavaScript vanilla
-- **Backend robusto** con FastAPI y SQLAlchemy
-- **Autenticación JWT** segura
-- **Validación de formularios** tanto en frontend como backend
-- **Base de datos SQLite** (fácil de cambiar a PostgreSQL/MySQL)
-- **Interfaz moderna** con animaciones y efectos visuales
-- **Manejo de errores** completo
-- **CORS configurado** para desarrollo
+- 🎨 **Frontend responsivo** con HTML5, CSS3 y JavaScript vanilla
+- ⚙ **Backend robusto** con FastAPI y SQLAlchemy
+- 🔒 **Autenticación JWT**  segura con expiración configurable
+- ✅ **Validación de formularios** tanto en frontend como backend
+- 💾 **Base de datos SQLite** (fácil de cambiar a PostgreSQL/MySQL)
+- 📱 **Diseño responsivo** con animaciones y efectos visuales
+- ⚠ **Manejo de errores** completo
+- 🌐 **CORS configurado** para desarrollo
+- 📝 **Documentación automática** con Swagger UI
+
+## 🖼️ Vista Previa
+
+### Login
+
+<https://via.placeholder.com/800x500/667eea/ffffff?text=Formulario+de+Login>
+
+### Registro
+
+<https://via.placeholder.com/800x500/764ba2/ffffff?text=Formulario+de+Registro>
+
+### Dashboard
+
+<https://via.placeholder.com/800x500/28a745/ffffff?text=Dashboard+de+Usuario>
 
 ## 📁 Estructura del Proyecto
 
 ```
 auth-system/
-├── frontend/
-│   └── index.html          # Aplicación frontend completa
-├── backend/
-│   ├── main.py            # Aplicación FastAPI
-│   ├── requirements.txt   # Dependencias Python
-│   └── .env              # Variables de entorno
-└── README.md             # Este archivo
+├── 📁 frontend/
+│   └── index.html              # Aplicación frontend completa
+├── 📁 backend/
+│   ├── main.py                # API FastAPI
+│   ├── .env                   # Variables de entorno
+│   ├── requirements.txt       # Dependencias Python
+│   └── auth.db               # Base de datos SQLite (auto-generada)
+├── README.md                  # Documentación del proyecto
+└── .gitignore                # Archivos ignorados por Git
 ```
 
 ## 🛠️ Instalación y Configuración
 
-### Backend (Python)
+### Prerrequisitos
 
-1. **Crear directorio y entorno virtual:**
+- Python 3.11 o superior ([Descargar aquí](https://www.python.org/downloads/))
+- Git ([Descargar aquí](https://git-scm.com/downloads))
+
+### 📥 Clonar el Repositorio
+
 ```bash
-mkdir auth-system && cd auth-system
-mkdir backend && cd backend
-python -m venv venv
+git clone https://github.com/Azfe/signup-login-form-authentication.git
+cd auth-system
+```
+
+### ⚙️ Configuración del Backend (Python)
+
+#### 1. **Crear y activar entorno virtual:**
+
+```bash
+cd backend
+python -m venv .venv
 source venv/bin/activate  # En Windows: venv\Scripts\activate
 ```
 
-2. **Instalar dependencias:**
+#### 2. **Instalar dependencias:**
+
 ```bash
-pip install fastapi==0.104.1
-pip install uvicorn==0.24.0
-pip install sqlalchemy==2.0.23
-pip install python-jose[cryptography]==3.3.0
-pip install passlib[bcrypt]==1.7.4
-pip install python-multipart==0.0.6
-pip install python-dotenv==1.0.0
+pip install fastapi==0.115.0
+pip install uvicorn==0.32.0
+pip install sqlalchemy==2.0.36
+pip install "python-jose[cryptography]==3.3.0"
+pip install "passlib[bcrypt]==1.7.4"
+pip install python-dotenv==1.0.1
+pip install "pydantic[email]==2.9.0"
+pip install email-validator==2.2.0
 ```
 
-3. **Crear archivo .env:**
+O usando requirements.txt:
+
+```bash
+pip install -r requirements.txt
+```
+
+#### 3. **Configurar variables de entorno:**
+
+Crear archivo `.env` en la carpeta `backend/`:
+
 ```env
+# Clave secreta para JWT (cambiar en producción)
 SECRET_KEY=tu-clave-secreta-muy-segura-aqui-cambiala-por-una-aleatoria
-DATABASE_URL=sqlite:///./auth.db
-ACCESS_TOKEN_EXPIRE_MINUTES=30
-```
-
-4. **Ejecutar el servidor:**
-```bash
-python main.py
-# O alternativamente:
-uvicorn main:app --reload --host 0.0.0.0 --port 8000
-```
-
-### Frontend
-
-1. **Crear directorio frontend:**
-```bash
-cd .. && mkdir frontend
-# Copiar el contenido HTML en frontend/index.html
-```
-
-2. **Servir el frontend (opcional):**
-```bash
-# Con Python
-cd frontend
-python -m http.server 3000
-
-# Con Node.js (si tienes instalado)
-npx serve -s . -p 3000
-
-# O simplemente abrir index.html en el navegador
-```
-
-## 🔧 Configuración de Variables de Entorno
-
-Crea un archivo `.env` en el directorio backend:
-
-```env
-# Clave secreta para JWT (genera una aleatoria en producción)
-SECRET_KEY=09d25e094faa6ca2556c818166b7a9563b93f7099f6f0f4caa6cf63b88e8d3e7
 
 # URL de la base de datos
 DATABASE_URL=sqlite:///./auth.db
 
 # Tiempo de expiración del token (en minutos)
 ACCESS_TOKEN_EXPIRE_MINUTES=30
+```
 
-# Para producción con PostgreSQL:
-# DATABASE_URL=postgresql://user:password@localhost/dbname
+#### 4. **Ejecutar el servidor backend:**
+
+```bash
+python main.py
+# O alternativamente:
+uvicorn main:app --reload --host 0.0.0.0 --port 8000
+```
+
+El backend estará disponible en: `http://localhost:8000`
+
+### 🌐 Configuración del Frontend
+
+#### 1. **Abrir nueva terminal y navegar al frontend:**
+
+```bash
+cd frontend
+```
+
+#### 2. **Servir el frontend:**
+
+Opción A - Con Python:
+
+```bash
+python -m http.server 3000
+```
+
+Opción B - Con Node.js:
+
+```bash
+bashnpx serve -s . -p 3000
+```
+
+Opción C - Abrir directamente:
+
+```bash
+# Hacer doble clic en index.html
+```
+
+El frontend estará disponible en: `http://localhost:3000`
+
+## 🎯 Uso de la Aplicación
+
+### 1. Registrar Usuario
+
+Abrir `http://localhost:3000`
+Hacer clic en "Regístrate aquí"
+Completar el formulario:
+
+Nombre completo
+Email válido
+Contraseña (mínimo 6 caracteres)
+Confirmar contraseña
+
+Hacer clic en "Registrarse"
+
+### 2. Iniciar Sesión
+
+Ingresar email y contraseña
+Hacer clic en "Iniciar Sesión"
+Serás redirigido al dashboard
+
+### 3. Dashboard
+
+Ver información del usuario
+Cerrar sesión cuando desees
+
+## 🔧 Desarrollo
+
+### Ejecutar en Modo Desarrollo
+
+#### Terminal 1 - Backend
+
+```bash
+cd backend
+.venv\Scripts\activate  # Windows
+# source .venv/bin/activate  # macOS/Linux
+uvicorn main:app --reload --host 0.0.0.0 --port 8000
+```
+
+#### Terminal 2 - Frontend
+
+```bash
+cd frontend
+python -m http.server 3000
+```
+
+## 🧪 Testing
+
+### Ejecutar tests del backend
+
+```bash
+cd backend
+pytest test_main.py -v
+```
+
+### Generar usuarios de prueba
+
+```bash
+python test_main.py --generate-users
 ```
 
 ## 🌐 Endpoints de la API
@@ -109,7 +215,7 @@ ACCESS_TOKEN_EXPIRE_MINUTES=30
 - `POST /auth/login` - Iniciar sesión
 - `GET /auth/me` - Obtener información del usuario actual
 
-### Gestión de Usuarios
+### Usuarios
 
 - `GET /auth/users` - Obtener lista de usuarios (requiere autenticación)
 - `DELETE /auth/users/{user_id}` - Eliminar usuario (solo el propio)
@@ -120,55 +226,9 @@ ACCESS_TOKEN_EXPIRE_MINUTES=30
 - `GET /docs` - Documentación automática de Swagger
 - `GET /redoc` - Documentación alternativa de ReDoc
 
-## 📝 Uso de la API
-
-### Registro de Usuario
-
-```javascript
-const response = await fetch('http://localhost:8000/auth/register', {
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/json',
-  },
-  body: JSON.stringify({
-    name: "Juan Pérez",
-    email: "juan@ejemplo.com",
-    password: "mipassword123"
-  })
-});
-```
-
-### Inicio de Sesión
-
-```javascript
-const response = await fetch('http://localhost:8000/auth/login', {
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/json',
-  },
-  body: JSON.stringify({
-    email: "juan@ejemplo.com",
-    password: "mipassword123"
-  })
-});
-
-const data = await response.json();
-// data.access_token contiene el JWT
-```
-
-### Acceso a Rutas Protegidas
-
-```javascript
-const response = await fetch('http://localhost:8000/auth/me', {
-  headers: {
-    'Authorization': `Bearer ${token}`
-  }
-});
-```
-
 ## 🔒 Seguridad
 
-### Características de Seguridad Implementadas:
+### Características de Seguridad Implementadas
 
 - **Hashing de contraseñas** con bcrypt
 - **Tokens JWT** con expiración configurable
@@ -177,7 +237,7 @@ const response = await fetch('http://localhost:8000/auth/me', {
 - **Verificación de tokens** en rutas protegidas
 - **Sanitización de datos** con Pydantic
 
-### Recomendaciones para Producción:
+### Recomendaciones para Producción
 
 1. **Cambiar la SECRET_KEY** por una clave aleatoria y segura
 2. **Usar HTTPS** en producción
@@ -185,235 +245,102 @@ const response = await fetch('http://localhost:8000/auth/me', {
 4. **Usar una base de datos robusta** (PostgreSQL, MySQL)
 5. **Implementar rate limiting**
 6. **Agregar logging** para auditoría
-7. **Validar y sanitizar** todas las entradas
-
-## 🛡️ Validaciones Implementadas
-
-### Frontend:
-- Validación de email
-- Confirmación de contraseña
-- Longitud mínima de contraseña
-- Campos requeridos
-- Mensajes de error amigables
-
-### Backend:
-- Validación de esquemas con Pydantic
-- Verificación de email único
-- Validación de contraseña (mínimo 6 caracteres)
-- Autenticación de credenciales
-- Verificación de tokens JWT
-
-## 🎨 Características del Frontend
-
-### Diseño:
-- **Interfaz moderna** con gradientes y efectos glass
-- **Animaciones suaves** con CSS3
-- **Responsive design** para móviles y desktop
-- **Estados de carga** con spinners
-- **Alertas contextuales** para feedback
-
-### Funcionalidades:
-- **Navegación fluida** entre formularios
-- **Persistencia de sesión** con localStorage
-- **Verificación automática** de tokens
-- **Logout seguro** con limpieza de datos
-- **Manejo de errores** completo
-
-## 📊 Base de Datos
-
-### Esquema de Usuario:
-
-```sql
-CREATE TABLE users (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    name VARCHAR NOT NULL,
-    email VARCHAR UNIQUE NOT NULL,
-    hashed_password VARCHAR NOT NULL,
-    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
-);
-```
-
-### Migración a PostgreSQL:
-
-Para usar PostgreSQL en producción, cambiar en `.env`:
-
-```env
-DATABASE_URL=postgresql://username:password@localhost:5432/auth_db
-```
-
-Y instalar el driver:
-```bash
-pip install psycopg2-binary
-```
-
-## 🧪 Testing
-
-### Probar el Backend:
-
-```bash
-# Instalar dependencias de testing
-pip install pytest pytest-asyncio httpx
-
-# Crear tests (ejemplo)
-# test_main.py
-import pytest
-from fastapi.testclient import TestClient
-from main import app
-
-client = TestClient(app)
-
-def test_register():
-    response = client.post(
-        "/auth/register",
-        json={
-            "name": "Test User",
-            "email": "test@example.com",
-            "password": "testpass123"
-        }
-    )
-    assert response.status_code == 200
-
-def test_login():
-    # Primero registrar
-    client.post(
-        "/auth/register",
-        json={
-            "name": "Test User",
-            "email": "login@example.com", 
-            "password": "testpass123"
-        }
-    )
-    
-    # Luego hacer login
-    response = client.post(
-        "/auth/login",
-        json={
-            "email": "login@example.com",
-            "password": "testpass123"
-        }
-    )
-    assert response.status_code == 200
-    assert "access_token" in response.json()
-```
+7. **Variables de entorno seguras**
 
 ## 🚀 Despliegue
 
-### Usando Docker:
+### Docker (recomendado)
+
+Crear `Dockerfile` en backend:
 
 ```dockerfile
 # Dockerfile
-FROM python:3.9
+FROM python:3.11-slim
 
 WORKDIR /app
-
 COPY requirements.txt .
 RUN pip install -r requirements.txt
 
 COPY . .
-
 CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
 ```
 
-```yaml
-# docker-compose.yml
-version: '3.8'
-services:
-  api:
-    build: .
-    ports:
-      - "8000:8000"
-    environment:
-      - SECRET_KEY=your-secret-key
-      - DATABASE_URL=sqlite:///./auth.db
-    volumes:
-      - ./auth.db:/app/auth.db
+Ejecutar:
+
+```bash
+cd backend
+docker build -t auth-system .
+docker run -p 8000:8000 auth-system
 ```
 
-### Variables de Entorno para Producción:
+Variables de Entorno para Producción
 
 ```env
-SECRET_KEY=super-secret-key-for-production
-DATABASE_URL=postgresql://user:pass@db:5432/authdb
+SECRET_KEY=super-secret-production-key-here
+DATABASE_URL=postgresql://user:pass@localhost/authdb
 ACCESS_TOKEN_EXPIRE_MINUTES=60
 DEBUG=False
 CORS_ORIGINS=["https://yourdomain.com"]
 ```
 
-## 🔧 Personalización
+## 🤝 Contribuir
 
-### Agregar Nuevos Campos al Usuario:
+1. Fork el proyecto
+2. Crear rama para tu feature (`git checkout -b feature/AmazingFeature`)
+3. Commit tus cambios (`git commit -m 'Add some AmazingFeature'`)
+4. Push a la rama (`git push origin feature/AmazingFeature`)
+5. Abrir Pull Request
 
-1. **Modificar el modelo SQLAlchemy:**
-```python
-class User(Base):
-    # ... campos existentes ...
-    phone = Column(String, nullable=True)
-    role = Column(String, default="user")
-```
+## 📝 Changelog
 
-2. **Actualizar los esquemas Pydantic:**
-```python
-class UserBase(BaseModel):
-    name: str
-    email: EmailStr
-    phone: Optional[str] = None
-    role: str = "user"
-```
+### v1.0.0 (2024-XX-XX)
 
-### Agregar Roles y Permisos:
+- ✨ Sistema completo de autenticación
+- 🎨 Frontend responsivo con CSS3
+- 🔐 Backend con FastAPI y JWT
+- 📱 Dashboard de usuario
+- ✅ Validaciones completas
+- 🧪 Tests unitarios
 
-```python
-from enum import Enum
+## 🐛 Problemas Conocidos
 
-class UserRole(str, Enum):
-    ADMIN = "admin"
-    USER = "user"
-    MODERATOR = "moderator"
+- Python 3.13: Usar Python 3.11 o 3.12 para mejor compatibilidad
+- CORS: Verificar que el frontend esté en los origins permitidos
 
-def require_role(required_role: UserRole):
-    def role_checker(current_user: User = Depends(get_current_user)):
-        if current_user.role != required_role:
-            raise HTTPException(
-                status_code=403,
-                detail="Insufficient permissions"
-            )
-        return current_user
-    return role_checker
+## 📚 Recursos
 
-# Uso:
-@app.get("/admin/users")
-async def admin_only_route(user: User = Depends(require_role(UserRole.ADMIN))):
-    # Solo admin puede acceder
-    pass
-```
-
-## 📚 Recursos Adicionales
-
-- [Documentación de FastAPI](https://fastapi.tiangolo.com/)
-- [JWT.io](https://jwt.io/) - Para debuggear tokens JWT
-- [SQLAlchemy Docs](https://docs.sqlalchemy.org/)
-- [Pydantic Docs](https://docs.pydantic.dev/)
-
-## 🐛 Troubleshooting
-
-### Problemas Comunes:
-
-1. **Error de CORS:**
-   - Verificar que el frontend esté en los origins permitidos
-   - Comprobar que las URLs coincidan exactamente
-
-2. **Token inválido:**
-   - Verificar que la SECRET_KEY sea la misma
-   - Comprobar que el token no haya expirado
-
-3. **Error de base de datos:**
-   - Verificar que el archivo de BD tenga permisos de escritura
-   - Para PostgreSQL, verificar conexión y credenciales
-
-4. **Error de instalación:**
-   - Usar un entorno virtual limpio
-   - Verificar la versión de Python (3.7+)
+- <[FastAPI Documentation](https://fastapi.tiangolo.com/)>
+- <[JWT.io](https://jwt.io/)> - Debug JWT tokens
+- <[SQLAlchemy Docs](https://docs.sqlalchemy.org/)>
+- <[Pydantic Docs](https://docs.pydantic.dev/)>
 
 ## 📄 Licencia
 
-Este proyecto está bajo la Licencia MIT. Libre para uso personal y comercial.
+Este proyecto está bajo la Licencia MIT. Ver el archivo LICENSE para más detalles.
+
+## 👨‍💻 Autor
+
+### Alex Zapata
+
+- GitHub: <[@azfe](https://github.com/azfe)>
+- Email: <[alexzapata1984@gmail.com](mailto:alexzapata1984@gmail.com)>
+
+### 🌟 Agradecimientos
+
+- <[FastAPI](https://fastapi.tiangolo.com/)> por el excelente framework
+- [SQLAlchemy](https://sqlalchemy.org/) por el ORM
+- [Pydantic](https://pydantic-docs.helpmanual.io/) por la validación de datos
+
+#### ⭐ Si este proyecto te ayudó, dale una estrella en GitHub! ⭐
+
+## 🚀 Demo en Vivo
+
+[Ver Demo](https://azup.form-auth.com) | [Documentación API](https://https://azup.form-auth.com/docs)
+
+## 📞 Soporte
+
+Si tienes problemas:
+
+1. Revisa la sección de Issues
+2. Crea un nuevo issue con detalles del problema
+3. Incluye tu versión de Python y sistema operativo
