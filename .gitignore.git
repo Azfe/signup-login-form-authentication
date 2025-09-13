@@ -3,6 +3,7 @@
 
 test_-_usage_example.py
 system_configuration_and_setup.md
+backend/auth.db
 
 ### Python ###
 # Byte-compiled / optimized / DLL files
