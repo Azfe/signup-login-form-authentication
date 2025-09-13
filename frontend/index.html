@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Autenticación</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <div class="container">
+        <!-- Formulario de Login -->
+        <div id="loginForm" class="form-container active">
+            <div class="form-header">
+                <h2>Iniciar Sesión</h2>
+                <p>Accede a tu cuenta</p>
+            </div>
+
+            <div id="loginAlert" class="alert"></div>
+
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="loginEmail">Email</label>
+                    <input type="email" id="loginEmail" name="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="loginPassword">Contraseña</label>
+                    <input type="password" id="loginPassword" name="password" required>
+                </div>
+
+                <button type="submit" class="btn" id="loginBtn">
+                    <span class="btn-text">Iniciar Sesión</span>
+                </button>
+            </form>
+
+            <div class="form-footer">
+                <p>¿No tienes cuenta?</p>
+                <a id="showRegister">Regístrate aquí</a>
+            </div>
+        </div>
+
+        <!-- Formulario de Registro -->
+        <div id="registerForm" class="form-container">
+            <div class="form-header">
+                <h2>Registro</h2>
+                <p>Crea tu cuenta</p>
+            </div>
+
+            <div id="registerAlert" class="alert"></div>
+
+            <form id="register-form">
+                <div class="form-group">
+                    <label for="registerName">Nombre completo</label>
+                    <input type="text" id="registerName" name="name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="registerEmail">Email</label>
+                    <input type="email" id="registerEmail" name="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="registerPassword">Contraseña</label>
+                    <input type="password" id="registerPassword" name="password" required minlength="6">
+                </div>
+
+                <div class="form-group">
+                    <label for="confirmPassword">Confirmar contraseña</label>
+                    <input type="password" id="confirmPassword" name="confirmPassword" required>
+                </div>
+
+                <button type="submit" class="btn" id="registerBtn">
+                    <span class="btn-text">Registrarse</span>
+                </button>
+            </form>
+
+            <div class="form-footer">
+                <p>¿Ya tienes cuenta?</p>
+                <a id="showLogin">Inicia sesión aquí</a>
+            </div>
+        </div>
+
+        <!-- Dashboard -->
+        <div id="dashboard" class="dashboard">
+            <h2>¡Bienvenido!</h2>
+            <div class="user-info">
+                <p><strong>Usuario:</strong> <span id="userName"></span></p>
+                <p><strong>Email:</strong> <span id="userEmail"></span></p>
+            </div>
+            <button class="btn logout-btn" id="logoutBtn">Cerrar Sesión</button>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+
+</body>
