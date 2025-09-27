@@ -2,10 +2,10 @@
 
 Un sistema completo de autenticación con registro y login usando HTML5, CSS3, JavaScript para el frontend y Python (FastAPI) con JWT para el backend.
 
-<https://img.shields.io/badge/Demo-Live-green>
-<https://img.shields.io/badge/Python-3.11%2B-blue>
-<https://img.shields.io/badge/FastAPI-0.115%2B-green>
-<https://img.shields.io/badge/License-MIT-yellow>
+![Demo](https://img.shields.io/badge/Demo-Live-green)
+![Python](https://img.shields.io/badge/Python-3.13%2B-blue)
+![FastAPI](https://img.shields.io/badge/FastAPI-0.115%2B-green)
+![License](https://img.shields.io/badge/License-MIT-yellow)
 
 ## 🚀 Características
 
@@ -23,19 +23,19 @@ Un sistema completo de autenticación con registro y login usando HTML5, CSS3, J
 
 ### Login
 
-<https://via.placeholder.com/800x500/667eea/ffffff?text=Formulario+de+Login>
+<!-- ![Vista previa de la app: Login](preview/Screenshot_login.png) -->
+
+<img src="preview/Screenshot_login.png" alt="Vista previa de la app: Login" height="400"/>
 
 ### Registro
 
-<https://via.placeholder.com/800x500/764ba2/ffffff?text=Formulario+de+Registro>
+<!-- ![Vista previa de la app: Sign Up](preview/Screenshot_registro.png) -->
 
-### Dashboard
-
-<https://via.placeholder.com/800x500/28a745/ffffff?text=Dashboard+de+Usuario>
+<img src="preview/Screenshot_registro.png" alt="Vista previa de la app: Sign Up" height="400"/>
 
 ## 📁 Estructura del Proyecto
 
-```
+```bash
 auth-system/
 ├── 📁 frontend/
 │   └── index.html              # Aplicación frontend completa
@@ -52,7 +52,7 @@ auth-system/
 
 ### Prerrequisitos
 
-- Python 3.11 o superior ([Descargar aquí](https://www.python.org/downloads/))
+- Python 3.13 o superior ([Descargar aquí](https://www.python.org/downloads/))
 - Git ([Descargar aquí](https://git-scm.com/downloads))
 
 ### 📥 Clonar el Repositorio
